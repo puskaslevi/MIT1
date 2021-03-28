@@ -9,6 +9,8 @@ import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 
+import java.util.concurrent.TimeUnit;
+
 public class TrainSystemTest {
 
 	TrainController controller;
@@ -106,5 +108,14 @@ public class TrainSystemTest {
 		Assert.assertEquals(30, controller.getReferenceSpeed());
 
 		Assert.assertEquals(6, tachograph.getSize());
+	}
+	@Test
+	public void ReferenceSpeedChangingPeriodically() throws InterruptedException {
+		user.overrideJoystickPosition(5);
+		controller.enforceReferenceSpeed();
+		TimeUnit.MILLISECONDS.sleep(300);
+		Assert.assertEquals(15, controller.getReferenceSpeed());
+		TimeUnit.MILLISECONDS.sleep(700);
+		Assert.assertEquals(50, controller.getReferenceSpeed());
 	}
 }

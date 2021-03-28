@@ -9,6 +9,8 @@ import hu.bme.mit.train.tachograph.TrainTachograph;
 import hu.bme.mit.train.user.TrainUserImpl;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TrainSystem {
 
@@ -31,6 +33,8 @@ public class TrainSystem {
 
 	public TrainTachograph getTachograph() { return tachograph;}
 
+
+
 	static void main(String[] args){
 
 		System.out.println("Train Speed Controller");
@@ -42,6 +46,7 @@ public class TrainSystem {
 			if (option == -1)
 				break;
 			ts.getUser().overrideJoystickPosition(option);
+
 			System.out.println(ts.getController().getReferenceSpeed());
 			scanner.close();
 		}
