@@ -21,7 +21,7 @@ public class TrainControllerImpl implements TrainController {
 			try {
 				TimeUnit.MILLISECONDS.sleep(100);
 			} catch (InterruptedException e) {
-				stopReferenceSpeedEnforce();
+				Thread.currentThread().interrupt();
 			}
 		}
 	});
