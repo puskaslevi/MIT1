@@ -30,8 +30,8 @@ public class TrainUserImpl implements TrainUser {
 	}
 
 	@Override
-	public void setAlarmState(boolean alarmState) {
-		this.alarmState = alarmState;
+	public void setAlarmState(boolean alarmFlag) {
+		this.alarmState = alarmFlag;
 	}
 
 	@Override
